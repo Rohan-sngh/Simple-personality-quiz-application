@@ -12,6 +12,10 @@ class MyApp extends StatelessWidget {
   }
 
   Widget build(BuildContext context) {
+    var questions = [
+      'What\'s your favourite colour?',
+      'What\'s your favourite animal?',
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const Text('The questions!'),
+            const Text(questions[0]),
             RaisedButton(
               onPressed: answerQuestion,
               child: const Text('Answer 1'),
