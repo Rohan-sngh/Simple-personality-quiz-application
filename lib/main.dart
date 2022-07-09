@@ -5,12 +5,21 @@ void main() {
 }
 
 // ignore: use_key_in_widget_constructors
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var questionIndex = 0;
+
   void answerQuestion() {
-    // ignore: avoid_print
-    print('Answer Chosen!');
+    setState(() {
+      questionIndex = questionIndex + 1;
+    });
   }
 
+  @override
   Widget build(BuildContext context) {
     var questions = [
       'What\'s your favourite colour?',
@@ -23,7 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const Text(questions[0]),
+            Text(
+              questions[questionIndex],
+            ),
             RaisedButton(
               onPressed: answerQuestion,
               child: const Text('Answer 1'),
